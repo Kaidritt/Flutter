@@ -1,0 +1,34 @@
+
+curl -O https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.13.9-stable.tar.xz
+tar xf flutter_linux_3.13.9-stable.tar.xz
+sudo mv flutter /usr/local/flutter
+echo "export PATH=/usr/local/flutter/bin:$PATH" >> ~/.bashrc
+source ~/.bashrc
+sudo apt update
+sudo apt install -y openjdk-11-jdk wget unzip
+mkdir -p $HOME/Android/cmdline-tools
+cd $HOME/Android/cmdline-tools
+wget https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
+unzip commandlinetools-linux-9477386_latest.zip
+mv cmdline-tools latest
+echo "export ANDROID_HOME=$HOME/Android" >> ~/.bashrc
+echo "export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH" >> ~/.bashrc
+source ~/.bashrc
+sdkmanager --install "platform-tools" "platforms;android-33" "build-tools;33.0.2"
+sdkmanager --licenses
+y -> entrada do teclado
+y -> entrada do teclado
+y -> entrada do teclado
+y -> entrada do teclado
+y -> entrada do teclado
+y -> entrada do teclado
+y -> entrada do teclado
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install -y ./google-chrome-stable_current_amd64.deb
+which google-chrome
+echo "export CHROME_EXECUTABLE=$(which google-chrome)" >> ~/.bashrc
+source ~/.bashrc
+cd /workspaces/Flutter/
+rm -rf flutter_linux_3.13.9-stable.tar.xz
+flutter doctor
+flutter create first_app
